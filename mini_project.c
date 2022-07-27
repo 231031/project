@@ -2,21 +2,25 @@
 #include <stdlib.h>
 #include <time.h>
 
+int decision[20];
 int fund[2]; // Global
+float money_keep;
+int j=0;
 int *random(int choice) // random percentage of interest
 {
     srand((unsigned int)time(NULL));
     for (int i = 0; i < choice; ++i) // random and get same number
     {
-        fund[i] = (rand() % 6) + 3;
+        decision[j] = fund[i] = (rand() % 6) + 3;
+        j++;
     }
-    return fund;
+    return decision;
 }
 
-void show_random(float money_start) 
+int show_random(float money_start) 
 {
     int cal_month = 0, month, year, choice;
-    float money, money_keep;
+    float money;
     money = money_start;
     printf("Time Past: 0 year 0 month\n");
     printf("Current money: 1000.00 Majikite\n");
@@ -58,6 +62,87 @@ void show_random(float money_start)
         }
         money = money_keep; 
     }
+    printf("Final money: %.2f\n",money_keep);
+}
+
+void money()
+{
+    float thousand,five_hundred,one_hundred,fifty,twenty,ten,five,two,one;
+    char *amount[] = {"1000","500","100","50","20","10","5","2","1","0.5","0.25"};
+    float point_fif,point_twenty;
+    float decimal;
+    int i=0;
+    int bank[11];
+    
+    while (money_keep >= 1000)
+    {
+        bank[i] = money_keep/1000;
+        money_keep = money_keep - bank[i]*1000;
+    }
+    i++;
+    while (money_keep >= 500)
+    {
+        bank[i] = money_keep/500;
+        money_keep = money_keep - bank[i]*500;
+    }
+    i++;
+    while (money_keep >= 100)
+    {
+        bank[i] = money_keep/100;
+        money_keep = money_keep - bank[i]*100;
+    }
+    i++;
+   while (money_keep >= 50)
+    {
+        bank[i] = money_keep/50;
+        money_keep = money_keep - bank[i]*50;
+    }
+    i++;
+    while (money_keep >= 20)
+    {
+        bank[i] = money_keep/20;
+        money_keep = money_keep - bank[i]*20;
+    }
+    i++;
+    while (money_keep >= 10)
+    {
+        bank[i] = money_keep/10;
+        money_keep = money_keep - bank[i]*10;
+    }
+    i++;
+    while (money_keep >= 5)
+    {
+        bank[i] = money_keep/5;
+        money_keep = money_keep - bank[i]*5;
+    }
+    i++;
+    while (money_keep >= 2)
+    {
+        bank[i] = money_keep/2;
+        money_keep = money_keep - bank[i]*2;
+    }
+    i++;
+    while (money_keep >= 1)
+    {
+        bank[i] = money_keep/1;
+        money_keep = money_keep - bank[i]*1;
+    }
+    i++;
+    while (money_keep >= 0.5)
+    {
+        bank[i] = money_keep/0.5;
+        money_keep = money_keep - bank[i]*0.5;
+    }
+    i++;
+    while (money_keep >= 0.25)
+    {
+        bank[i] = money_keep/0.25;
+        money_keep = money_keep - bank[i]*0.25;
+    }
+    for(int j=0;j<11;++j)
+    {
+        printf("%s Majijkite x%d\n",amount[i],bank[i]);
+    }
 }
 
 int main()
@@ -65,4 +150,5 @@ int main()
     printf("Start money. 1000.00 Majikite\n");
     printf("\n");
     show_random(1000);
+    money();
 }
