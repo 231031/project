@@ -141,7 +141,7 @@ void money()
     }
     for(int j=0;j<11;++j)
     {
-        printf("%s Majijkite x%d\n",amount[i],bank[i]);
+        printf("%s Majijkite x%.1f\n",amount[j],bank[j]);
     }
 }
 
