@@ -92,4 +92,5 @@ int main()
     printf("\n");
     show_random(1000);
     final_money();
+    return 0;
 }
