@@ -37,12 +37,12 @@ void show_random(float money_start)
             cal_month += 3;
             year = cal_month / 12;
             month = cal_month % 12;
-            money_keep = ((money * fund[0]) / 100) * 3 + money;
+            money_keep = ((money * fund[0]) / 100) * 3 + money; // money + interest fund[0] per
             printf("Times past: %d year %d months\n", year, month);
             printf("Current money: %.2f\n", money_keep); // after plus interest
             printf("In %d year %d month, the interest of the fund is %d per\n", (cal_month - 3) / 12, (cal_month - 3) % 12, fund[0]);
         }
-        else // 6 month
+        else // choice 2    plus 6 month 
         {
             cal_month += 6;
             if (cal_month > 60) // cal_month is 4 years 9 months = 57 months if we choose choice2 will >5 years
@@ -53,7 +53,7 @@ void show_random(float money_start)
             }
             year = cal_month / 12;
             month = cal_month % 12;
-            money_keep = money + ((money * 6) / 100) * 6;
+            money_keep = money + ((money * 6) / 100) * 6; // money + interest 6 per
             printf("Times Past: %d years %d months\n", year, month);
             printf("Current money: %.2f\n", money_keep); // after plus interest
             printf("In %d year %d month, the interest of the fund is %d per\n", (cal_month - 6) / 12, (cal_month - 6) % 12, fund[0]);
@@ -61,6 +61,7 @@ void show_random(float money_start)
         }
         money = money_keep;
     }
+    printf("---------------------------------------------\n");
     printf("Final money: %.2f\n", money_keep);
     printf("\n");
 }
